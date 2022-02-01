@@ -2,18 +2,18 @@ cmake_minimum_required(VERSION 3.17)
 
 include(pico-sdk/pico_sdk_init.cmake)
 
-project(PicoTemplate)
+project(EthernetSensor)
 
 pico_sdk_init()
 
-add_executable(PicoTemplate main.cpp)
+add_executable(EthernetSensor main.cpp)
 
 # Link with the pico stdlib
-target_link_libraries(PicoTemplate pico_stdlib hardware_adc)
+target_link_libraries(EthernetSensor pico_stdlib hardware_adc)
 
 # Create map/bin/hex/uf2 files
-pico_add_extra_outputs(PicoTemplate)
+pico_add_extra_outputs(EthernetSensor)
 
 # Enable USB serial
-pico_enable_stdio_usb(PicoTemplate 1)
-pico_enable_stdio_uart(PicoTemplate 0)
+pico_enable_stdio_usb(EthernetSensor 1)
+pico_enable_stdio_uart(EthernetSensor 0)

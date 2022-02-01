@@ -1,8 +1,8 @@
-# Pico Template
+# Ethernet Sensor
 
-A simple cmake template for the Raspberry Pi pico. CLion works great as an IDE.
+Created with help of https://github.com/modmuss50/pico-template
 
-Was made with help from the [Getting Started guide](https://datasheets.raspberrypi.org/pico/getting_started_with_pico.pdf)
+WIP: Pico with Ethernet with various sensors attached
 
 # MacOS setup
 
@@ -15,10 +15,7 @@ git submodule update --init --recursive
 # Build
 
 ```bash
-mkdir build
-cd build
-camke -G Ninja ..
-ninja
+make build
 ```
 
 Copy the .uf2 onto the pico to run
