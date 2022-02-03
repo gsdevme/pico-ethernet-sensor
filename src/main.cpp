@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/adc.h"
+#include "hardware/watchdog.h"
+#include "hardware/gpio.h"
 
 // The built in LED
 #define LED_PIN 25
@@ -10,6 +12,15 @@ const float conversion_factor = 3.3f / (1 << 12);
 
 int main() {
     stdio_init_all();
+
+    if (watchdog_caused_reboot()) {
+        printf("Rebooted by Watchdog!\n");
+        return 0;
+    } else {
+        printf("Clean boot\n");
+    }
+
+    watchdog_enable(5000, 1);
 
     gpio_init(LED_PIN);
     gpio_set_dir(LED_PIN, GPIO_OUT);
@@ -21,6 +32,8 @@ int main() {
     adc_select_input(TEMP_ADC);
 
     while (true) {
+        watchdog_update();
+
         gpio_put(LED_PIN, true);
         sleep_ms(1000);
 
